@@ -10,7 +10,9 @@ def main_loop():
     while running:
         # Your main loop logic goes here
         co2_value = lib.mesure_co2_value()
-        print(co2_value)
+        humidity_value = lib.humidity_value()
+        temparature_value = lib.temparature_value()
+        print(co2_value, humidity_value,temparature_value)
         if co2_value < 400:
             lib.build_in_led(1)      
             utime.sleep_ms(150)
@@ -26,12 +28,13 @@ def main_loop():
             utime.sleep_ms(150)
             lib.switch_2(0)
             utime.sleep_ms(150)
-        elif 800 <= co2_value:
+
+        if humidity_value <= 50:
             lib.switch_3(1)      
             utime.sleep_ms(150)
             lib.switch_3(0)
             utime.sleep_ms(150)
-            
+
         utime.sleep(3)
         
 def stop():
