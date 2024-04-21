@@ -1,8 +1,6 @@
-
 import utime
 from machine import Pin
 from machine import PWM
-
 
 pin_in = Pin(15, Pin.IN, Pin.PULL_UP)
 pin_out = Pin(16, mode=Pin.OUT)
