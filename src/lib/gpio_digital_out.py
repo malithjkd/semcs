@@ -27,4 +27,3 @@ def switch_3(state):
         gpio_15.value(1)
     else:
         gpio_15.value(0)
-
