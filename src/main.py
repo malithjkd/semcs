@@ -1,7 +1,7 @@
 import utime
 import lib 
 
-
+pico_led = lib.digital_out(25)
 
 # Flag to control whether the loop should continue running
 running = True
@@ -9,33 +9,11 @@ running = True
 def main_loop():
     while running:
         # Your main loop logic goes here
-        co2_value = lib.mesure_co2_value()
-        humidity_value = lib.humidity_value()
-        temparature_value = lib.temparature_value()
-        print(co2_value, humidity_value,temparature_value)
-        if co2_value < 400:
-            lib.build_in_led(1)      
-            utime.sleep_ms(150)
-            lib.build_in_led(0)
-            utime.sleep_ms(150)
-        elif 400 <= co2_value <= 600:
-            lib.switch_1(1)      
-            utime.sleep_ms(150)
-            lib.switch_1(0)
-            utime.sleep_ms(150)
-        elif 600 <= co2_value <= 800:
-            lib.switch_2(1)      
-            utime.sleep_ms(150)
-            lib.switch_2(0)
-            utime.sleep_ms(150)
-
-        if humidity_value <= 50:
-            lib.switch_3(1)      
-            utime.sleep_ms(150)
-            lib.switch_3(0)
-            utime.sleep_ms(150)
-
-        utime.sleep(3)
+        pico_led.set_high()
+        utime.sleep_ms(500)
+        pico_led.set_low()
+        utime.sleep_ms(500)
+        
         
 def stop():
     global running
