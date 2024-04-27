@@ -8,6 +8,10 @@ pin_out = Pin(16, mode=Pin.OUT)
 HIGH_SIGNAL = int((2 ** 16) / 2)
 LOW_SIGNAL = 0
 
+#signels
+fan = [10000000011111111101000000101111]
+AC = [1000100011000000000001010001,1000100000000000110000001100]
+# on,off
 
 def send_code(pin, code, freq=38000):
     pwm = PWM(pin)
@@ -100,14 +104,43 @@ def validate_code(code):
             raise InvalidCodeException
 
 
-while True:
-    out = read_code(pin_in)
-    # ignore random signals 
-    if out:
-        print(out)
-        utime.sleep(3)
-        send_code(pin_out, out)
-       
+
+# main 
+
+print("sending.fan off >>> " )
+utime.sleep_ms(3000)
+send_code(pin_out, str(fan[0]))
+print(fan[0])
+#utime.sleep_ms(3000)
+
+#print("sending AC on >>> " )
+#utime.sleep_ms(3000)
+#send_code(pin_out, str(AC[1]))
+#print(AC[1])
+#
+utime.sleep_ms(6000)
+#
+#print("sending AC off >>> " )
+#utime.sleep_ms(3000)
+#send_code(pin_out, str(AC[0]))
+#print(AC[0])
+#
+print("sending.fan on >>> " )
+utime.sleep_ms(3000)
+send_code(pin_out, str(fan[0]))
+print(fan[0])
+
+
+
+
+#while True:
+#    out = read_code(pin_in)
+#    # ignore random signals 
+#    if out:
+#        print("waiting to print")
+#        utime.sleep_ms(20000)
+#        send_code(pin_out, out)
+#        print(out)
         #try:
         #    validate_code(out)
         #    print(out)
