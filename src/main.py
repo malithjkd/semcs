@@ -2,10 +2,13 @@ import utime
 import lib 
 
 
-led_digital_out = lib.digital_out(25)
+
+led_digital_out = lib.digital_out('WL_GPIO0')
 
 # Flag to control whether the loop should continue running
 running = True
+
+
 
 def main_loop():
     while running:
@@ -23,6 +26,9 @@ def stop():
 def start():
     global running
     print("Starting...")
+    
+    connect()
+    
     running = True
     main_loop()
 
@@ -40,4 +46,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
