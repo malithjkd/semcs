@@ -105,31 +105,34 @@ def validate_code(code):
 
 
 
-# main 
+while True: # main 
 
-print("sending.fan off >>> " )
-utime.sleep_ms(3000)
-send_code(pin_out, str(fan[0]))
-print(fan[0])
-#utime.sleep_ms(3000)
+    print("sending.fan off >>> " )
+    utime.sleep_ms(3000)
+    send_code(pin_out, str(fan[0]))
+    print(fan[0])
+    utime.sleep_ms(3000)
 
-#print("sending AC on >>> " )
-#utime.sleep_ms(3000)
-#send_code(pin_out, str(AC[1]))
-#print(AC[1])
-#
-utime.sleep_ms(6000)
-#
-#print("sending AC off >>> " )
-#utime.sleep_ms(3000)
-#send_code(pin_out, str(AC[0]))
-#print(AC[0])
-#
-print("sending.fan on >>> " )
-utime.sleep_ms(3000)
-send_code(pin_out, str(fan[0]))
-print(fan[0])
+    print("sending AC on >>> " )
+    utime.sleep_ms(3000)
+    send_code(pin_out, str(AC[1]))
+    print(AC[1])
 
+    utime.sleep_ms(600000)
+
+    print("sending AC off >>> " )
+    utime.sleep_ms(3000)
+    send_code(pin_out, str(AC[0]))
+    print(AC[0])
+
+    utime.sleep_ms(60000)
+
+    print("sending.fan on >>> " )
+    utime.sleep_ms(3000)
+    send_code(pin_out, str(fan[0]))
+    print(fan[0])
+
+    utime.sleep_ms(300000)
 
 
 
@@ -148,3 +151,4 @@ print(fan[0])
         #    send_code(pin_out, out)
         #except InvalidCodeException:
         #    print("InvalidCodeException:" + out)
+
